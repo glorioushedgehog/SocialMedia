@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+struct Login: Codable {
+    var name: String
+    var password: String
+}

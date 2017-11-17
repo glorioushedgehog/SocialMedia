@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+struct Id: Codable {
+    var token: String
+}

@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+struct DirectMessage: Codable {
+    var to: String
+    var from: String
+    var message: Message
+}

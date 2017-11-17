@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+struct Message: Codable {
+    var user: String
+    var text: String
+    var date: Date
+    var imgURL: String?
+    var id: String?
+    var replyTo: String?
+    var likedBy: [String]
+}
