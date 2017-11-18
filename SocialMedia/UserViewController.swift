@@ -38,6 +38,14 @@ class UserViewController: UIViewController {
         sendDirectMessage()
     }
     
+    // detect the user tapping the screen so that they can
+    // close the keyboard by tapping outside of the keyboard
+    @IBAction func screenTapped(_ sender: UITapGestureRecognizer) {
+        // close the keyboard if it is open
+        newMessageTextField.resignFirstResponder()
+        imageURLTextField.resignFirstResponder()
+    }
+    
     // retrieve the direct messages from the server
     func getMessages() {
         MessageService.sharedMessageService.getDirect() { (messages) in
@@ -68,6 +76,9 @@ class UserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // detect the screen being tapped to allow the user to close the keyboard
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(NewMessageViewController.screenTapped(_:)))
+        self.view.addGestureRecognizer(tapGesture)
         feedTableView.dataSource = self
         // detect the user pulling down on the table to
         // refresh the direct messages

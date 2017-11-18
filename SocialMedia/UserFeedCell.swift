@@ -28,30 +28,8 @@ class UserFeedCell: UITableViewCell {
     // this direct message
     @IBOutlet weak var messageImageView: UIImageView!
     
-    // shows how many like this direct message has recieved
-    @IBOutlet weak var likeCountLabel: UILabel!
-    
     // the height of messageImageView
     @IBOutlet weak var imageViewHeight: NSLayoutConstraint!
-    
-    // store the number of likes the direct message has recieved
-    // to avoid uncesesarily parsing ints from strings
-    var likeCount: Int = 0
-    
-    // transmit a like for this direct message when the user taps
-    // the like button
-    @IBAction func likeButtonTapped(_ sender: Any) {
-        MessageService.sharedMessageService.postLike(messageID: (self.directMessage?.message.id)!) { (success) in
-            if success {
-                DispatchQueue.main.async {
-                    // update the view count to inform
-                    // the user that their like was successful
-                    self.likeCount += 1
-                    self.likeCountLabel.text = self.likeCount.description
-                }
-            }
-        }
-    }
     
     // clear out the cell when it is out of scope
     override func prepareForReuse() {
@@ -67,8 +45,6 @@ class UserFeedCell: UITableViewCell {
         UserFeedCell.dateFormatter.dateFormat = "MMM d, yyyy"
         self.dateLabel.text = UserFeedCell.dateFormatter.string(from: directMessage.message.date)
         self.messageLabel.text = directMessage.message.text
-        self.likeCount = directMessage.message.likedBy.count
-        self.likeCountLabel.text = self.likeCount.description
         // check if the direct message has an imageURL
         if let imageURLString = directMessage.message.imgURL {
             let imageURL = URL(string: imageURLString)
