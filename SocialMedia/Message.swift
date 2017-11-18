@@ -12,8 +12,14 @@ struct Message: Codable {
     var user: String
     var text: String
     var date: Date
+    // messages do not have to have imageURL's
     var imgURL: String?
+    // id's are assigned by the server, so they must
+    // be declared as optional here
     var id: String?
+    // messages do not have to be replies
     var replyTo: String?
+    // contains the usernames of all the users that liked
+    // this message. usernames can be repeated.
     var likedBy: [String]
 }

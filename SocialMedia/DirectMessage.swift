@@ -9,7 +9,9 @@
 import Foundation
 
 struct DirectMessage: Codable {
+    // the username of the user that recieved the direct message
     var to: String
+    // the username of the user that sent the direct message
     var from: String
     var message: Message
 }

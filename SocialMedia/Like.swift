@@ -8,6 +8,9 @@
 
 import Foundation
 
+// only used for encoding a message ID into json for
+// sending a like to the server in postLike() in
+// MessageService
 struct Like: Codable {
     var likedMessageID: String
 }

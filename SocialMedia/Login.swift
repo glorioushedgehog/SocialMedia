@@ -8,6 +8,8 @@
 
 import Foundation
 
+// only used for encoding the user's info into json
+// to send to server in the login() method in MessageService
 struct Login: Codable {
     var name: String
     var password: String

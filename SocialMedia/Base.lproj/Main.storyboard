@@ -30,13 +30,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyI-ei-Ukf">
-                                                    <rect key="frame" x="16" y="53" width="343" height="222.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kub-2S-3WS">
-                                                    <rect key="frame" x="16" y="16" width="343" height="21"/>
+                                                    <rect key="frame" x="16" y="16" width="343" height="259.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -44,7 +38,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xW2-KB-2mn">
                                                     <rect key="frame" x="16" y="283.5" width="343" height="0.0"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" id="Dqn-be-EHP"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" id="Dqn-be-EHP"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAO-Bu-ZqQ">
@@ -61,19 +55,24 @@
                                                         <action selector="likeButtonTapped:" destination="5gV-VQ-Dtf" eventType="touchUpInside" id="bWc-yX-hQe"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kub-2S-3WS">
+                                                    <rect key="frame" x="324" y="291" width="34.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="IuK-O5-zlF" firstAttribute="leading" secondItem="QAO-Bu-ZqQ" secondAttribute="trailing" constant="8" id="1w4-f9-D6v"/>
                                                 <constraint firstItem="QAO-Bu-ZqQ" firstAttribute="leading" secondItem="E1u-36-rqJ" secondAttribute="leading" constant="16" id="4WD-qm-tPr"/>
-                                                <constraint firstItem="kub-2S-3WS" firstAttribute="leading" secondItem="E1u-36-rqJ" secondAttribute="leading" constant="16" id="BCp-MT-BdR"/>
+                                                <constraint firstItem="xyI-ei-Ukf" firstAttribute="top" secondItem="E1u-36-rqJ" secondAttribute="top" constant="16" id="EPb-Gx-bhm"/>
                                                 <constraint firstAttribute="trailing" secondItem="kub-2S-3WS" secondAttribute="trailing" constant="16" id="ExM-zl-fsh"/>
-                                                <constraint firstItem="kub-2S-3WS" firstAttribute="top" secondItem="E1u-36-rqJ" secondAttribute="top" constant="16" id="Ob8-lE-EX1"/>
                                                 <constraint firstAttribute="bottom" secondItem="QAO-Bu-ZqQ" secondAttribute="bottom" constant="16" id="RMf-D0-kHE"/>
                                                 <constraint firstItem="IuK-O5-zlF" firstAttribute="centerY" secondItem="QAO-Bu-ZqQ" secondAttribute="centerY" id="Ya7-SO-btZ"/>
-                                                <constraint firstItem="xyI-ei-Ukf" firstAttribute="top" secondItem="kub-2S-3WS" secondAttribute="bottom" constant="16" id="aDB-uW-Urw"/>
                                                 <constraint firstItem="xW2-KB-2mn" firstAttribute="width" secondItem="E1u-36-rqJ" secondAttribute="width" constant="-32" id="dJu-SN-uKH"/>
                                                 <constraint firstItem="xW2-KB-2mn" firstAttribute="centerX" secondItem="E1u-36-rqJ" secondAttribute="centerX" id="koh-V0-hID"/>
                                                 <constraint firstItem="QAO-Bu-ZqQ" firstAttribute="top" secondItem="xW2-KB-2mn" secondAttribute="bottom" constant="8" id="njk-gR-gkQ"/>
+                                                <constraint firstItem="kub-2S-3WS" firstAttribute="centerY" secondItem="IuK-O5-zlF" secondAttribute="centerY" id="oSi-SE-Fz4"/>
                                                 <constraint firstItem="xyI-ei-Ukf" firstAttribute="leading" secondItem="E1u-36-rqJ" secondAttribute="leading" constant="16" id="rm6-GV-Fvp"/>
                                                 <constraint firstAttribute="trailing" secondItem="xyI-ei-Ukf" secondAttribute="trailing" constant="16" id="t8c-nO-gLs"/>
                                                 <constraint firstItem="xW2-KB-2mn" firstAttribute="top" secondItem="xyI-ei-Ukf" secondAttribute="bottom" constant="8" id="uWR-7q-o0D"/>
@@ -428,7 +427,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eB4-hD-6hM">
                                                     <rect key="frame" x="16" y="81" width="343" height="0.0"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" id="GZU-G1-jfH"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" id="GZU-G1-jfH"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeo-po-UeW">

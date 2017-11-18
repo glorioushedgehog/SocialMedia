@@ -8,6 +8,9 @@
 
 import Foundation
 
+// only used to decode the server's response to
+// a login request made by the login() method in
+// MessageService
 struct Id: Codable {
     var token: String
 }
