@@ -58,19 +58,23 @@ class MessageViewController: UIViewController {
     var originalMessage: Message?
     
     // tells the user that this message is a reply to some
-    // other message
-    @IBOutlet weak var replyToLabel: UILabel!
+    // other message and which user wrote the original message
+    @IBOutlet weak var replyingToLabel: UILabel!
     
-    // the button the user can tap to the the message to
-    // which this message is a reply
-    @IBOutlet weak var originalMessageButton: UIButton!
+    // a button that lets the user switch to the original message
+    @IBOutlet weak var seeOriginalMessageButton: UIButton!
     
-    // called when the user taps the button with the username
-    // of the poster of the original message on it
+    // called when the user taps the button to see the
+    // original message
     @IBAction func seeOriginalMessageButtonTapped(_ sender: Any) {
+        // if this is a reply, show the original message
         if self.isReply {
-            // if this is a reply, show the original message
+            // reset everything to do with
+            // original message since we are switching
+            // messages
+            self.isReply = false
             self.message = originalMessage
+            self.originalMessage = nil
             configure()
         }
     }
@@ -182,16 +186,18 @@ class MessageViewController: UIViewController {
             if let origMessage = self.originalMessage {
                 self.isReply = true
                 // tell the user the message is a reply
-                self.replyToLabel.text = "replying to"
-                //self.originalMessageButton.setTitle(origMessage.user + "'s message", for: .normal)
+                self.replyingToLabel.text = "replying to " + origMessage.user
             }else{
-                // remember that this message is not
-                // a valid reply so that an original message
-                // is not looked for
+                // tell the user that this message is not a reply
                 self.isReply = false
-                self.replyToLabel.text = ""
-                self.originalMessageButton.setTitle("", for: .normal)
+                self.replyingToLabel.text = ""
+                self.seeOriginalMessageButton.isHidden = true
             }
+        }else{
+            // tell the user that this message is not a reply
+            self.isReply = false
+            self.replyingToLabel.text = ""
+            self.seeOriginalMessageButton.isHidden = true
         }
     }
     

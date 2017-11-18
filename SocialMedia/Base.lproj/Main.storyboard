@@ -29,7 +29,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="328.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xW2-KB-2mn">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xW2-KB-2mn">
                                                     <rect key="frame" x="16" y="283" width="343" height="0.0"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" id="Dqn-be-EHP"/>
@@ -272,7 +272,7 @@
                                 <rect key="frame" x="0.0" y="206" width="375" height="461"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XzT-oQ-m20">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="127"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="213"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mF-vd-WEr">
                                                 <rect key="frame" x="16" y="16" width="43" height="21"/>
@@ -312,18 +312,18 @@
                                                     <action selector="likeButtonTapped:" destination="HVf-qg-Fau" eventType="touchUpInside" id="3Kx-25-LzR"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYD-hX-tT5">
-                                                <rect key="frame" x="167" y="143.5" width="0.0" height="0.0"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="replying to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCj-gC-QRD">
+                                                <rect key="frame" x="16" y="127" width="343" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XaB-4e-okb">
-                                                <rect key="frame" x="175" y="127" width="184" height="33"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgg-Or-ShO">
+                                                <rect key="frame" x="106.5" y="164" width="161" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="original message button"/>
+                                                <state key="normal" title="see original message"/>
                                                 <connections>
-                                                    <action selector="seeOriginalMessageButtonTapped:" destination="HVf-qg-Fau" eventType="touchUpInside" id="1PN-pe-Xjz"/>
+                                                    <action selector="seeOriginalMessageButtonTapped:" destination="HVf-qg-Fau" eventType="touchUpInside" id="mVc-MK-fa5"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -331,15 +331,13 @@
                                         <constraints>
                                             <constraint firstItem="Lck-h8-J3P" firstAttribute="top" secondItem="XzT-oQ-m20" secondAttribute="top" constant="16" id="5CW-Tb-cSV"/>
                                             <constraint firstItem="8mF-vd-WEr" firstAttribute="top" secondItem="XzT-oQ-m20" secondAttribute="top" constant="16" id="5nM-4f-g8n"/>
+                                            <constraint firstItem="pCj-gC-QRD" firstAttribute="top" secondItem="dU3-sI-Jxz" secondAttribute="bottom" constant="16" id="7ac-gZ-oCR"/>
+                                            <constraint firstAttribute="bottom" secondItem="tgg-Or-ShO" secondAttribute="bottom" constant="16" id="C12-CM-UyT"/>
                                             <constraint firstItem="dU3-sI-Jxz" firstAttribute="top" secondItem="5Ui-GN-Ozg" secondAttribute="bottom" constant="8" id="GF6-Xc-DUP"/>
                                             <constraint firstItem="yq3-ST-jKF" firstAttribute="centerY" secondItem="dU3-sI-Jxz" secondAttribute="centerY" id="H9S-8E-7fD"/>
-                                            <constraint firstItem="SYD-hX-tT5" firstAttribute="centerY" secondItem="XaB-4e-okb" secondAttribute="centerY" id="MCx-ZK-KMK"/>
-                                            <constraint firstItem="XaB-4e-okb" firstAttribute="leading" secondItem="SYD-hX-tT5" secondAttribute="trailing" constant="8" id="cid-zV-AO6"/>
-                                            <constraint firstItem="XaB-4e-okb" firstAttribute="top" secondItem="dU3-sI-Jxz" secondAttribute="bottom" constant="16" id="cld-2w-odW"/>
+                                            <constraint firstItem="tgg-Or-ShO" firstAttribute="top" secondItem="pCj-gC-QRD" secondAttribute="bottom" constant="16" id="k4x-nR-UrL"/>
                                             <constraint firstItem="yq3-ST-jKF" firstAttribute="leading" secondItem="dU3-sI-Jxz" secondAttribute="trailing" constant="8" id="kEw-L4-hwi"/>
-                                            <constraint firstAttribute="bottom" secondItem="dU3-sI-Jxz" secondAttribute="bottom" constant="16" id="m4i-VB-5Md"/>
                                             <constraint firstItem="d84-BY-MdX" firstAttribute="top" secondItem="8mF-vd-WEr" secondAttribute="bottom" constant="16" id="pig-zY-plH"/>
-                                            <constraint firstItem="SYD-hX-tT5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XzT-oQ-m20" secondAttribute="leading" constant="16" id="qUD-xc-VlF"/>
                                             <constraint firstItem="Lck-h8-J3P" firstAttribute="leading" secondItem="8mF-vd-WEr" secondAttribute="trailing" constant="16" id="sHM-AK-PKe"/>
                                             <constraint firstItem="5Ui-GN-Ozg" firstAttribute="top" secondItem="d84-BY-MdX" secondAttribute="bottom" constant="8" id="vEK-Mb-L1s"/>
                                         </constraints>
@@ -385,6 +383,7 @@
                         <constraints>
                             <constraint firstItem="2ez-8Q-l7K" firstAttribute="trailing" secondItem="noO-RJ-JJv" secondAttribute="trailing" constant="16" id="185-hA-Zzq"/>
                             <constraint firstItem="2ez-8Q-l7K" firstAttribute="trailing" secondItem="Lck-h8-J3P" secondAttribute="trailing" constant="16" id="38l-uA-erl"/>
+                            <constraint firstItem="pCj-gC-QRD" firstAttribute="leading" secondItem="2ez-8Q-l7K" secondAttribute="leading" constant="16" id="5sP-hl-2Hj"/>
                             <constraint firstItem="2ez-8Q-l7K" firstAttribute="trailing" secondItem="Ck7-Eu-Enn" secondAttribute="trailing" id="6tr-xH-yOX"/>
                             <constraint firstItem="lKG-46-mZZ" firstAttribute="centerX" secondItem="2ez-8Q-l7K" secondAttribute="centerX" id="CrT-3m-2mM"/>
                             <constraint firstItem="5Ui-GN-Ozg" firstAttribute="centerX" secondItem="2ez-8Q-l7K" secondAttribute="centerX" id="FDp-VB-8ou"/>
@@ -397,11 +396,12 @@
                             <constraint firstItem="2ez-8Q-l7K" firstAttribute="trailing" secondItem="hye-Dw-eMM" secondAttribute="trailing" constant="16" id="XJO-3p-PAz"/>
                             <constraint firstItem="2ez-8Q-l7K" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yq3-ST-jKF" secondAttribute="trailing" constant="16" id="YA4-WS-V5t"/>
                             <constraint firstItem="noO-RJ-JJv" firstAttribute="leading" secondItem="2ez-8Q-l7K" secondAttribute="leading" constant="16" id="f4w-vZ-oVc"/>
-                            <constraint firstItem="2ez-8Q-l7K" firstAttribute="trailing" secondItem="XaB-4e-okb" secondAttribute="trailing" constant="16" id="iwZ-eH-rXN"/>
                             <constraint firstItem="2ez-8Q-l7K" firstAttribute="trailing" secondItem="UO0-3L-EbE" secondAttribute="trailing" constant="16" id="jhl-RN-QZD"/>
                             <constraint firstItem="lKG-46-mZZ" firstAttribute="top" secondItem="hye-Dw-eMM" secondAttribute="bottom" constant="16" id="k9T-gM-tc3"/>
+                            <constraint firstItem="tgg-Or-ShO" firstAttribute="centerX" secondItem="2ez-8Q-l7K" secondAttribute="centerX" id="lRf-th-c2D"/>
                             <constraint firstItem="2ez-8Q-l7K" firstAttribute="bottom" secondItem="Ck7-Eu-Enn" secondAttribute="bottom" id="mdm-Rd-hk6"/>
                             <constraint firstItem="hye-Dw-eMM" firstAttribute="top" secondItem="noO-RJ-JJv" secondAttribute="bottom" constant="16" id="mdw-3u-YxU"/>
+                            <constraint firstItem="2ez-8Q-l7K" firstAttribute="trailing" secondItem="pCj-gC-QRD" secondAttribute="trailing" constant="16" id="oT3-xg-JQJ"/>
                             <constraint firstItem="8mF-vd-WEr" firstAttribute="leading" secondItem="2ez-8Q-l7K" secondAttribute="leading" constant="16" id="pIr-HQ-fd2"/>
                             <constraint firstItem="d84-BY-MdX" firstAttribute="leading" secondItem="2ez-8Q-l7K" secondAttribute="leading" constant="16" id="qNT-xq-sMB"/>
                             <constraint firstItem="dU3-sI-Jxz" firstAttribute="leading" secondItem="2ez-8Q-l7K" secondAttribute="leading" constant="16" id="rfi-WZ-1Yk"/>
@@ -422,10 +422,10 @@
                         <outlet property="likeCountLabel" destination="dU3-sI-Jxz" id="mzQ-mJ-Rc6"/>
                         <outlet property="messageImageView" destination="5Ui-GN-Ozg" id="uv7-gZ-mqy"/>
                         <outlet property="messageLabel" destination="d84-BY-MdX" id="qbT-Ox-bVW"/>
-                        <outlet property="originalMessageButton" destination="XaB-4e-okb" id="YCo-Zc-tC3"/>
                         <outlet property="replyImageURLTextField" destination="hye-Dw-eMM" id="K7i-0f-j44"/>
                         <outlet property="replyMessageTextField" destination="noO-RJ-JJv" id="xa9-Zq-I2Y"/>
-                        <outlet property="replyToLabel" destination="SYD-hX-tT5" id="QeR-Ix-GsL"/>
+                        <outlet property="replyingToLabel" destination="pCj-gC-QRD" id="8Qd-R2-bj0"/>
+                        <outlet property="seeOriginalMessageButton" destination="tgg-Or-ShO" id="dL9-lC-zcR"/>
                         <outlet property="usernameLabel" destination="8mF-vd-WEr" id="4ni-Wk-hsK"/>
                     </connections>
                 </viewController>
