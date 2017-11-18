@@ -42,6 +42,39 @@ class MessageViewController: UIViewController {
     // unecessary parsing of strings into ints
     var likeCount: Int = 0
     
+    // display the image corresponding to this message's
+    // imageURL, if any
+    @IBOutlet weak var messageImageView: UIImageView!
+    
+    // the height of messageImageView
+    @IBOutlet weak var imageViewHeight: NSLayoutConstraint!
+    
+    // tells whether or not this message is a reply to some
+    // other message
+    var isReply: Bool = false
+    
+    // stores the message to which this message is a reply
+    // if it exists
+    var originalMessage: Message?
+    
+    // tells the user that this message is a reply to some
+    // other message
+    @IBOutlet weak var replyToLabel: UILabel!
+    
+    // the button the user can tap to the the message to
+    // which this message is a reply
+    @IBOutlet weak var originalMessageButton: UIButton!
+    
+    // called when the user taps the button with the username
+    // of the poster of the original message on it
+    @IBAction func seeOriginalMessageButtonTapped(_ sender: Any) {
+        if self.isReply {
+            // if this is a reply, show the original message
+            self.message = originalMessage
+            configure()
+        }
+    }
+    
     // detect screen taps so the user can close the keyboard.
     // note: this will not be called if the tap is inside
     // either of the textFields
@@ -102,8 +135,8 @@ class MessageViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // lay out the viewController according to the message
+    func configure() {
         // prepare to detect the return key on the keyboard being pressed
         self.replyMessageTextField.delegate = self
         self.replyImageURLTextField.delegate = self
@@ -118,6 +151,53 @@ class MessageViewController: UIViewController {
         self.messageLabel.text = self.message?.text
         self.likeCount = self.message?.likedBy.count ?? 0
         self.likeCountLabel.text = self.likeCount.description
+        // retrieve the image for this message, if any
+        if let imageURLString = self.message?.imgURL {
+            let imageURL = URL(string: imageURLString)
+            ImageService.shared.imageForURL(url: imageURL) { (image, url) in
+                // ensure that the image returned is the image for this message and
+                // not some other message's image
+                if url == imageURL {
+                    // check if the message's imageURL is a valid image
+                    if let img = image {
+                        // set the messageImageView's height so that the image is not stretched
+                        // or cropped
+                        let ratio = img.size.height / img.size.width
+                        self.imageViewHeight.constant = self.messageImageView.frame.width * ratio
+                        self.messageImageView.image = img
+                    }
+                }
+            }
+        }
+        // let the user go to the message which this message is replying to if this
+        // message is a reply
+        if let originalMessageID = self.message?.replyTo {
+            // find the message that has originalMessageID
+            for message in FeedViewController.messages {
+                if message.id == originalMessageID {
+                    self.originalMessage = message
+                    break
+                }
+            }
+            if let origMessage = self.originalMessage {
+                self.isReply = true
+                // tell the user the message is a reply
+                self.replyToLabel.text = "replying to"
+                //self.originalMessageButton.setTitle(origMessage.user + "'s message", for: .normal)
+            }else{
+                // remember that this message is not
+                // a valid reply so that an original message
+                // is not looked for
+                self.isReply = false
+                self.replyToLabel.text = ""
+                self.originalMessageButton.setTitle("", for: .normal)
+            }
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configure()
     }
 }
 

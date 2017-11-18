@@ -69,6 +69,8 @@ class UserViewController: UIViewController {
                 relevantMessages.append(dm)
             }
         }
+        // reverse the list of messages so the most
+        // recent ones are on top
         self.messages = relevantMessages.reversed()
         // put the messages in the table view
         self.feedTableView.reloadData()

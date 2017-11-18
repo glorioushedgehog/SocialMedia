@@ -11,7 +11,9 @@ import UIKit
 // display messages in a table view
 class FeedViewController: UIViewController {
     
-    var messages: [Message] = []
+    // static so that MessageViewController can find
+    // messages to which a message replied
+    static var messages: [Message] = []
     
     // the table view whose cells will each contain a message
     @IBOutlet weak var feedTableView: UITableView!
@@ -23,7 +25,9 @@ class FeedViewController: UIViewController {
         MessageService.sharedMessageService.getMessages() { (messages) in
             DispatchQueue.main.async {
                 if let mess = messages {
-                    self.messages = mess.reversed()
+                    // reverse the list of messages so the most
+                    // recent ones are on top
+                    FeedViewController.messages = mess.reversed()
                     // put the messages in the table
                     self.feedTableView.reloadData()
                 }
@@ -42,7 +46,7 @@ class FeedViewController: UIViewController {
         self.feedTableView.addSubview(self.refreshControl)
         getMessages()
     }
-    
+
     // prepare to detect the user pulling down on the screen
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -65,12 +69,12 @@ extension FeedViewController: UITableViewDataSource {
     
     // there will be exactly one message per cell
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        return FeedViewController.messages.count
     }
     
     // configure each FeedViewCell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let message = messages[indexPath.item]
+        let message = FeedViewController.messages[indexPath.item]
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedViewCell", for: indexPath) as! FeedViewCell
         cell.configure(message: message)
         return cell
@@ -82,7 +86,7 @@ extension FeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let messageViewController = storyboard.instantiateViewController(withIdentifier: "MessageViewController") as! MessageViewController
-        messageViewController.message = messages[indexPath.item]
+        messageViewController.message = FeedViewController.messages[indexPath.item]
         navigationController?.pushViewController(messageViewController, animated: true)
     }
 }
